@@ -6,7 +6,8 @@ window.onload = () => (
 function main() {
 
     let changeBtn = document.getElementById('change-btn');
-    let output = document.getElementById('output')
+    let output = document.getElementById('output');
+    let btnCopy = document.getElementById('copy-btn')
     let root = document.getElementById('root');
 
 
@@ -15,6 +16,10 @@ function main() {
         root.style.backgroundColor = bgColor;
         output.value = bgColor;
     });
+
+    btnCopy.addEventListener('click', function() {
+        navigator.clipboard.writeText(output.value)
+    })
 
 }
 
