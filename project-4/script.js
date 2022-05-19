@@ -26,7 +26,8 @@ function main() {
     });
 
     btnCopy.addEventListener('click', function() {
-        navigator.clipboard.writeText(output.value)
+        navigator.clipboard.writeText(output.value);
+        generateToastMessage(`${output.value} copied` )
     })
 
 }
@@ -38,6 +39,15 @@ function generateRGBcode() {
     let green = Math.floor(Math.random() * 255);
     let blue = Math.floor(Math.random() * 255);
     return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`
+}
+
+function generateToastMessage(msg) {
+    const div = document.createElement('div')
+    div.innerText = msg;
+
+    div.className = 'toast-message'
+
+    document.body.appendChild(div)
 }
 
 // Step 3 - collect all necessary refactors
