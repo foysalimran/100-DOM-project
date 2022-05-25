@@ -12,17 +12,17 @@
     <div class="container" id="root">
         <h1>Change the Background color by clicking following button</h1>
 
-        <p class="form-title">Hex code:</p>
+        <label for="output" class="form-title">Hex code:</label>
         <div class="form-group">
             
             <div class="input-icon">#</div>
             <input id="output" value="000000" type="text">
             <button id="copy-btn" class="copy-btn" title="Copy to clipboard">Copy</button>
         </div>
-        <p class="form-title">RGB code:</p>
+        <label for="output2" class="form-title">RGB code:</label>
         <div class="form-group">
-            <div class="input-icon">#</div>
-            <input id="output" value="000000" type="text">
+
+            <input style="margin-left:0" class="output" id="output2" value="rgba(255,255,1)" type="text">
             <button id="copy-btn" class="copy-btn" title="Copy to clipboard">Copy</button>
         </div>
         <button class="change-btn" id="change-btn">Change bg</button>
