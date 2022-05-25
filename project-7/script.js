@@ -19,22 +19,22 @@ window.onload = () => (
 )
 
 function main() {
-    let changeBtn = document.getElementById('change-btn');
+    let root = document.getElementById('root');
     let output = document.getElementById('output');
     let output2 = document.getElementById('output2');
-    let btnCopy = document.getElementById('copy-btn')
-    let root = document.getElementById('root');
-
+    let changeBtn = document.getElementById('change-btn');
+    let copyBtn = document.getElementById('copy-btn')
+    
     changeBtn.addEventListener('click', function() {
         const color = generateColorDecimal();
-        const hex = generateHexCode(color);
+        const hex = generateHexColor(color);
         const rgb = generateRGBColor(color);
         root.style.backgroundColor = hex;
         output.value = hex.substring(1);
         output2.value = rgb;
     });
 
-    btnCopy.addEventListener('click', function() {
+    copyBtn.addEventListener('click', function() {
         navigator.clipboard.writeText(`#${output.value}`);
         if(div !== null) {
             div.remove()
@@ -65,21 +65,22 @@ function main() {
 // return as an object
 
 function generateColorDecimal() {
-    let red = Math.floor(Math.random() * 255);
-    let green = Math.floor(Math.random() * 255);
-    let blue = Math.floor(Math.random() * 255);
-    return {
-        red,
-        green,
-        blue,
-    }
+	const red = Math.floor(Math.random() * 255);
+	const green = Math.floor(Math.random() * 255);
+	const blue = Math.floor(Math.random() * 255);
+
+	return {
+		red,
+		green,
+		blue,
+	};
 }
 
  // function 2 - generate hex color code
 
- function generateHexCode(color) {
+ function generateHexColor({ red, green, blue }) {
 
-    const getTwoCode = ({red, green, blue}) => {
+    const getTwoCode = (value) => {
         const hex = value.toString(16)
         return hex.length == 1 ? `0${hex}` : hex
     }
