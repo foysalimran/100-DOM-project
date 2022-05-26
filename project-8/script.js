@@ -23,7 +23,8 @@ function main() {
     let output = document.getElementById('output');
     let output2 = document.getElementById('output2');
     let changeBtn = document.getElementById('change-btn');
-    let copyBtn = document.getElementById('copy-btn')
+    let copyBtn = document.getElementById('copy-btn');
+    let copyBtn2 = document.getElementById('copy-btn-2')
     
     changeBtn.addEventListener('click', function() {
         const color = generateColorDecimal();
@@ -46,6 +47,21 @@ function main() {
             alert("Invalid Color Code")
         }
     })
+
+    
+
+    copyBtn2.addEventListener('click', function() {
+        navigator.clipboard.writeText(`#${output2.value}`);
+        if(div !== null) {
+            div.remove()
+            div = null;
+        }
+        if(isValidHex(output.value)){
+            generateToastMessage(`${output2.value} copied` )
+        } else{
+            alert("Invalid Color Code")
+        }
+    })
     
     output.addEventListener('keyup', function(e) {
         const color = e.target.value
@@ -54,6 +70,7 @@ function main() {
 
             if(color && isValidHex(color)){
                 root.style.backgroundColor = `#${color}`;
+                output2.value = hexToRGB(color);
             }
         }
 
@@ -93,6 +110,22 @@ function generateColorDecimal() {
 function generateRGBColor({red, green, blue}) {
     return `rgb(${red}, ${green}, ${blue})`
 }
+
+
+
+/**
+ * convert hex color to rgb
+ * @param {string} hex 
+ */
+function hexToRGB(hex) {
+    const red = parseInt(hex.slice(0,2), 16);
+    const green = parseInt(hex.slice(2,4), 16);
+    const blue = parseInt(hex.slice(4), 16);
+
+    return `rgb(${red}, ${green}, ${blue})`
+}
+
+console.log(hexToRGB('ffffff'))
 
 function generateToastMessage(msg) {
     div = document.createElement('div')
@@ -147,3 +180,9 @@ function isValidHex(color) {
 // step 12 - refactor the color generator function
 
 // step 13 - update color code to display rgb colors
+
+// step 14 - create hex to rgb function
+
+// step 15 - update change handler
+
+// step 16 - implement copy function
